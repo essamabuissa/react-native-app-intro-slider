@@ -299,6 +299,9 @@ export default class AppIntroSlider<ItemT = any> extends React.Component<
 
     return (
       <View style={styles.flexOne}>
+        {renderPagination
+          ? renderPagination(this.state.activeIndex)
+          : this._renderPagination()}
         <FlatList
           ref={(ref) => (this.flatList = ref as FlatList<ItemT>)}
           data={this.props.data}
@@ -315,9 +318,7 @@ export default class AppIntroSlider<ItemT = any> extends React.Component<
           initialNumToRender={data.length}
           {...otherProps}
         />
-        {renderPagination
-          ? renderPagination(this.state.activeIndex)
-          : this._renderPagination()}
+        
       </View>
     );
   }
